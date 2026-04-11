@@ -21,12 +21,18 @@ async function main() {
 
   await app.register(cors, {
     origin: (origin, cb) => {
-      if (!origin || allowedOrigins.some(o => origin.startsWith(o))) {
+      if (
+        !origin ||
+        allowedOrigins.some(o => origin.startsWith(o)) ||
+        origin.endsWith('.railway.app')
+      ) {
         cb(null, true)
       } else {
         cb(new Error('Not allowed by CORS'), false)
       }
     },
+    preflight: true,
+    credentials: true,
   })
   await app.register(jwt, { secret: process.env.JWT_SECRET || 'dev-secret-change-in-production' })
   await app.register(rateLimit, { max: 100, timeWindow: '1 minute' })
