@@ -12,7 +12,22 @@ async function main() {
   const app = Fastify({ logger: true })
 
   // Plugins
-  await app.register(cors, { origin: process.env.WEB_URL || '*' })
+  const allowedOrigins = [
+    process.env.WEB_URL,
+    process.env.LANDING_URL,
+    'http://localhost:3000',
+    'http://localhost:3001',
+  ].filter(Boolean) as string[]
+
+  await app.register(cors, {
+    origin: (origin, cb) => {
+      if (!origin || allowedOrigins.some(o => origin.startsWith(o))) {
+        cb(null, true)
+      } else {
+        cb(new Error('Not allowed by CORS'), false)
+      }
+    },
+  })
   await app.register(jwt, { secret: process.env.JWT_SECRET || 'dev-secret-change-in-production' })
   await app.register(rateLimit, { max: 100, timeWindow: '1 minute' })
 
