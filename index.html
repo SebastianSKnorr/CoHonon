@@ -754,8 +754,44 @@
       document.getElementById('partner').scrollIntoView({ behavior: 'smooth' })
     })
 
-    /* ── PARTNER FORM ── */
+    /* ── ANALYTICS TRACKING ── */
     const API = 'https://cohonon-platform-production.up.railway.app'
+    ;(function(){
+      try {
+        let sid = sessionStorage.getItem('_csid')
+        if (!sid) { sid = crypto.randomUUID(); sessionStorage.setItem('_csid', sid) }
+        let browser = 'Unknown', os = 'Unknown', device = 'Desktop'
+        const ua = navigator.userAgent
+        if (/Edg\//.test(ua)) browser = 'Microsoft Edge'
+        else if (/Chrome\//.test(ua)) browser = 'Google Chrome'
+        else if (/Firefox\//.test(ua)) browser = 'Mozilla Firefox'
+        else if (/Safari\//.test(ua)) browser = 'Apple Safari'
+        else if (/OPR\/|Opera\//.test(ua)) browser = 'Opera'
+        if (/Windows NT 10/.test(ua)) os = 'Windows 11 / 10'
+        else if (/Windows NT/.test(ua)) os = 'Windows'
+        else if (/Mac OS X/.test(ua)) os = 'macOS'
+        else if (/Linux/.test(ua)) os = 'Linux'
+        else if (/Android/.test(ua)) os = 'Android'
+        else if (/iPhone|iPad/.test(ua)) os = 'iOS'
+        if (/Mobi|Android|iPhone/.test(ua)) device = 'Mobile'
+        else if (/iPad|Tablet/.test(ua)) device = 'Tablet'
+        fetch(API + '/api/analytics/track', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            sessionId: sid,
+            page: location.pathname || '/',
+            referrer: document.referrer || null,
+            browser, os, device,
+            screen: screen.width + 'x' + screen.height,
+            language: navigator.language,
+            timezone: Intl.DateTimeFormat().resolvedOptions().timeZone,
+          }),
+        }).catch(function(){})
+      } catch(e) {}
+    })()
+
+    /* ── PARTNER FORM ── */
     document.getElementById('partner-form').addEventListener('submit', async function(e) {
       e.preventDefault()
       const btn = document.getElementById('partner-btn')
