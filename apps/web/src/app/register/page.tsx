@@ -36,12 +36,13 @@ export default function Register() {
   return (
     <main style={pageStyle}>
       <form onSubmit={handleSubmit} style={formStyle}>
-        <h1 style={{ margin: '0 0 0.25rem', fontSize: '1.5rem', fontWeight: 700 }}>Create account</h1>
-        <p style={{ margin: '0 0 2rem', color: '#9c8f83', fontSize: '0.9rem' }}>
-          Already have one? <Link href="/login" style={{ color: '#c4601a' }}>Log in</Link>
+        <h1 style={{ margin: '0 0 0.25rem', fontSize: '1.5rem', fontWeight: 700, letterSpacing: '-0.02em' }}>Create account</h1>
+        <p style={{ margin: '0 0 2rem', color: '#5a8099', fontSize: '0.9rem', fontWeight: 300 }}>
+          Already have one?{' '}
+          <Link href="/login" style={{ color: '#5ab4d4', textDecoration: 'none' }}>Log in</Link>
         </p>
 
-        {error && <p style={{ color: '#e05c4a', margin: '0 0 1rem', fontSize: '0.9rem' }}>{error}</p>}
+        {error && <p style={{ color: '#c87e8a', margin: '0 0 1rem', fontSize: '0.9rem' }}>{error}</p>}
 
         <label style={labelStyle}>Name</label>
         <input style={inputStyle} type="text" required value={form.name}
@@ -68,16 +69,19 @@ const pageStyle: React.CSSProperties = {
 }
 const formStyle: React.CSSProperties = {
   display: 'flex', flexDirection: 'column', width: '100%', maxWidth: '400px',
-  padding: '2.5rem', background: '#161412', borderRadius: '12px', border: '1px solid #2a2520',
+  padding: '2.5rem', background: 'rgba(90,180,212,0.03)', borderRadius: '12px', border: '1px solid #162330',
 }
 const labelStyle: React.CSSProperties = {
-  fontSize: '0.85rem', color: '#9c8f83', marginBottom: '0.4rem', fontWeight: 500,
+  fontSize: '0.82rem', color: '#5a8099', marginBottom: '0.4rem', fontWeight: 500, letterSpacing: '0.04em',
 }
 const inputStyle: React.CSSProperties = {
-  background: '#0d0c0b', border: '1px solid #2a2520', borderRadius: '6px',
-  padding: '0.65rem 0.9rem', color: '#e8e0d4', fontSize: '1rem', marginBottom: '1.2rem', outline: 'none',
+  background: 'rgba(90,180,212,0.04)', border: '1px solid #162330', borderRadius: '6px',
+  padding: '0.65rem 0.9rem', color: '#ddeef8', fontSize: '0.95rem', marginBottom: '1.2rem',
+  outline: 'none', fontFamily: 'inherit', fontWeight: 300,
 }
 const submitStyle: React.CSSProperties = {
-  marginTop: '0.5rem', padding: '0.75rem', background: '#c4601a', border: 'none',
-  borderRadius: '6px', color: '#e8e0d4', fontWeight: 600, fontSize: '1rem', cursor: 'pointer',
+  marginTop: '0.5rem', padding: '0.75rem', background: 'transparent',
+  border: '1px solid rgba(90,180,212,0.5)',
+  borderRadius: '6px', color: '#a8d8ee', fontWeight: 600, fontSize: '0.9rem',
+  cursor: 'pointer', letterSpacing: '0.04em', fontFamily: 'inherit',
 }

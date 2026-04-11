@@ -37,16 +37,16 @@ export default function Subscribers() {
       .finally(() => setLoading(false))
   }, [router])
 
-  if (loading) return <main style={pageStyle}><p style={{ color: '#9c8f83' }}>Loading…</p></main>
-  if (error) return <main style={pageStyle}><p style={{ color: '#e05c4a' }}>{error}</p></main>
+  if (loading) return <main style={pageStyle}><p style={{ color: '#5a8099' }}>Loading…</p></main>
+  if (error) return <main style={pageStyle}><p style={{ color: '#c87e8a' }}>{error}</p></main>
   if (!data) return null
 
   return (
     <main style={{ minHeight: '100vh', padding: '2rem', maxWidth: '800px', margin: '0 auto' }}>
       <div style={{ marginBottom: '2rem', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
         <div>
-          <h1 style={{ fontSize: '1.5rem', fontWeight: 700, margin: 0 }}>Newsletter</h1>
-          <p style={{ color: '#9c8f83', margin: '0.25rem 0 0', fontSize: '0.9rem' }}>
+          <h1 style={{ fontSize: '1.5rem', fontWeight: 700, margin: 0, letterSpacing: '-0.02em' }}>Newsletter</h1>
+          <p style={{ color: '#5a8099', margin: '0.25rem 0 0', fontSize: '0.9rem', fontWeight: 300 }}>
             {data.total} subscriber{data.total !== 1 ? 's' : ''}
           </p>
         </div>
@@ -55,23 +55,23 @@ export default function Subscribers() {
 
       {data.subscribers.length === 0 ? (
         <div style={emptyStyle}>
-          <p style={{ color: '#9c8f83' }}>No subscribers yet. Share the landing page.</p>
+          <p style={{ color: '#5a8099', fontWeight: 300 }}>No subscribers yet. Share the landing page.</p>
         </div>
       ) : (
         <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
           {data.subscribers.map(s => (
             <div key={s.id} style={rowStyle}>
               <div style={{ flex: 1 }}>
-                <p style={{ margin: 0, fontWeight: 500 }}>{s.email}</p>
-                {s.name && <p style={{ margin: 0, fontSize: '0.85rem', color: '#9c8f83' }}>{s.name}</p>}
+                <p style={{ margin: 0, fontWeight: 500, color: '#ddeef8' }}>{s.email}</p>
+                {s.name && <p style={{ margin: 0, fontSize: '0.85rem', color: '#5a8099', fontWeight: 300 }}>{s.name}</p>}
               </div>
               <div style={{ textAlign: 'right' }}>
-                <p style={{ margin: 0, fontSize: '0.8rem', color: '#9c8f83' }}>
+                <p style={{ margin: 0, fontSize: '0.8rem', color: '#5a8099' }}>
                   {new Date(s.createdAt).toLocaleDateString('en-GB', { day: 'numeric', month: 'short', year: 'numeric' })}
                 </p>
-                <p style={{ margin: 0, fontSize: '0.75rem', color: '#2a2520', background: '#c4601a22', padding: '0.1rem 0.4rem', borderRadius: '4px', display: 'inline-block', marginTop: '0.2rem' }}>
+                <span style={{ fontSize: '0.75rem', color: '#5ab4d4', background: 'rgba(90,180,212,0.08)', padding: '0.1rem 0.5rem', borderRadius: '4px', display: 'inline-block', marginTop: '0.2rem' }}>
                   {s.source}
-                </p>
+                </span>
               </div>
             </div>
           ))}
@@ -86,14 +86,14 @@ const pageStyle: React.CSSProperties = {
 }
 const rowStyle: React.CSSProperties = {
   display: 'flex', alignItems: 'center', justifyContent: 'space-between',
-  padding: '1rem 1.25rem', background: '#161412',
-  border: '1px solid #2a2520', borderRadius: '8px',
+  padding: '1rem 1.25rem', background: 'rgba(90,180,212,0.03)',
+  border: '1px solid #162330', borderRadius: '8px',
 }
 const emptyStyle: React.CSSProperties = {
-  padding: '3rem', textAlign: 'center', background: '#161412',
-  border: '1px solid #2a2520', borderRadius: '8px',
+  padding: '3rem', textAlign: 'center', background: 'rgba(90,180,212,0.03)',
+  border: '1px solid #162330', borderRadius: '8px',
 }
 const backBtn: React.CSSProperties = {
-  padding: '0.4rem 1rem', background: 'transparent', border: '1px solid #2a2520',
-  borderRadius: '6px', color: '#9c8f83', cursor: 'pointer', fontSize: '0.85rem',
+  padding: '0.4rem 1rem', background: 'transparent', border: '1px solid #162330',
+  borderRadius: '6px', color: '#5a8099', cursor: 'pointer', fontSize: '0.85rem', fontFamily: 'inherit',
 }
