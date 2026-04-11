@@ -1,129 +1,199 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>CoHonon — AI that lives in the physical world</title>
-  <meta name="description" content="CoHonon embeds artificial intelligence into physical objects — hardware that senses, decides, and acts. Built on QuestAI™.">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500&family=Playfair+Display:ital,wght@0,700;1,400&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CoHonon</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg: #0d0c0b;
+      --accent: #c4601a;
+      --text: #e8e0d4;
+      --muted: #9c8f83;
+      --border: #2a2520;
+    }
+
+    html, body {
+      height: 100%;
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'Inter', system-ui, sans-serif;
+    }
+
+    .scene {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      padding: 2rem;
+      text-align: center;
+      overflow: hidden;
+    }
+
+    .ghost {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: clamp(5rem, 20vw, 20rem);
+      font-weight: 800;
+      letter-spacing: -0.04em;
+      color: transparent;
+      -webkit-text-stroke: 1px rgba(196, 96, 26, 0.15);
+      user-select: none;
+      pointer-events: none;
+      white-space: nowrap;
+    }
+
+    .content {
+      position: relative;
+      z-index: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 1.5rem;
+      max-width: 480px;
+      width: 100%;
+    }
+
+    .logo {
+      font-size: 0.85rem;
+      font-weight: 600;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+
+    h1 {
+      font-size: clamp(2rem, 6vw, 3.5rem);
+      font-weight: 700;
+      letter-spacing: -0.03em;
+      line-height: 1.1;
+    }
+
+    h1 span { color: var(--accent); }
+
+    p.sub {
+      color: var(--muted);
+      font-size: 1rem;
+      line-height: 1.6;
+      max-width: 360px;
+    }
+
+    form {
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+      width: 100%;
+      margin-top: 0.5rem;
+    }
+
+    input {
+      background: rgba(255,255,255,0.04);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 0.75rem 1rem;
+      color: var(--text);
+      font-size: 0.95rem;
+      font-family: inherit;
+      outline: none;
+      transition: border-color 0.2s;
+      width: 100%;
+    }
+
+    input::placeholder { color: var(--muted); }
+    input:focus { border-color: var(--accent); }
+
+    button {
+      background: var(--accent);
+      border: none;
+      border-radius: 8px;
+      padding: 0.75rem 1rem;
+      color: var(--text);
+      font-size: 0.95rem;
+      font-weight: 600;
+      font-family: inherit;
+      cursor: pointer;
+      transition: opacity 0.2s;
+      width: 100%;
+    }
+
+    button:hover { opacity: 0.85; }
+    button:disabled { opacity: 0.5; cursor: default; }
+
+    .message {
+      font-size: 0.9rem;
+      min-height: 1.2em;
+    }
+
+    .message.success { color: #6ab04c; }
+    .message.error { color: #e05c4a; }
+  </style>
 </head>
 <body>
+  <div class="scene">
+    <div class="ghost">Coming Soon</div>
 
-  <!-- Nav -->
-  <nav>
-    <a href="#hero" class="nav-logo">CoHonon</a>
-    <a href="#partner" class="nav-cta">Become a Partner</a>
-  </nav>
+    <div class="content">
+      <div class="logo">CoHonon</div>
 
-  <!-- Hero -->
-  <section id="hero">
-    <div class="coming-soon">Coming Soon</div>
-    <div class="hero-inner">
-      <h1 class="hero-name reveal" style="--delay: 100ms">CoHonon</h1>
-      <p class="hero-sub reveal" style="--delay: 180ms">AI that lives in the physical world.</p>
-      <a href="#partner" class="btn reveal" style="--delay: 260ms">Become a Partner</a>
-    </div>
-  </section>
+      <h1>Commerce<br/>reimagined<span>.</span></h1>
 
-  <!-- The Problem -->
-  <section class="section" id="problem">
-    <span class="label reveal">The Problem</span>
-    <h2 class="section-heading reveal" style="--delay: 60ms">We built machines that think.<br>We forgot to teach them to care.</h2>
-    <p class="reveal" style="--delay: 120ms">The physical world runs on trust. When a device enters someone's home, their workshop, their child's room — it carries implicit weight. It is present. It is watched. It is felt.</p>
-    <p class="reveal" style="--delay: 180ms">Most AI was designed to be useful. Almost none of it was designed to be safe in the places that matter most. The gap between those two things is where CoHonon operates.</p>
-  </section>
+      <p class="sub">A world where brands live, users arrive as characters, and real products change hands. Be first to know.</p>
 
-  <!-- The Platform -->
-  <section class="section" id="platform">
-    <span class="label reveal">The Platform</span>
-    <h2 class="section-heading reveal" style="--delay: 60ms">QuestAI™</h2>
-    <p class="section-sub reveal" style="--delay: 100ms">A framework for AI you can actually trust — because you can see exactly where it meets the world.</p>
-
-    <div class="quest-tiers">
-      <div class="tier reveal" style="--delay: 140ms">
-        <span class="tier-label">One Drop</span>
-        <span class="tier-desc">One line of machine learning.</span>
-      </div>
-      <div class="tier reveal" style="--delay: 220ms">
-        <span class="tier-label">A Glass</span>
-        <span class="tier-desc">A model you can audit and understand.</span>
-      </div>
-      <div class="tier reveal" style="--delay: 300ms">
-        <span class="tier-label">An Ocean</span>
-        <span class="tier-desc">A large language model — vast, powerful, and opaque.</span>
-      </div>
-    </div>
-
-    <p class="reveal" style="--delay: 380ms">You cannot see into the middle of the ocean. That is not a flaw — it is physics. But we know exactly where the ocean meets the shore. That thin layer — where intention becomes output, where model meets person — is the most consequential surface in AI.</p>
-    <p class="reveal" style="--delay: 420ms">QuestAI™ is built around that surface. It governs the layer where AI behaviour intersects with human reality. Not to constrain what AI can do — but to ensure that what it does is legible, auditable, and aligned with the values of whoever built it.</p>
-  </section>
-
-  <!-- First Adopter -->
-  <section class="section" id="adopter">
-    <hr>
-    <span class="label reveal">First Adopter</span>
-    <h2 class="section-heading reveal" style="--delay: 60ms">Canal Creatures</h2>
-    <p class="adopter-year reveal" style="--delay: 100ms">2026</p>
-    <p class="reveal" style="--delay: 140ms">Canal Creatures is a line of physical AI companions designed for children — creatures that live in the real world, built on QuestAI™. They listen, they respond, they remember. And they are safe by design, not by accident.</p>
-    <p class="reveal" style="--delay: 180ms">They are our proof of concept and our first commercial deployment.</p>
-  </section>
-
-  <!-- Credentials -->
-  <section class="section" id="roots">
-    <span class="label reveal">Roots</span>
-    <h2 class="section-heading reveal" style="--delay: 60ms">Built on real work in Northern Europe.</h2>
-    <p class="reveal" style="--delay: 120ms">Nordic AI and Com2.ai were founded to close the gap between AI research and physical deployment. Not to publish papers — to ship systems. CoHonon is the next chapter of that work: focused, applied, and accountable.</p>
-  </section>
-
-  <!-- Founder -->
-  <section class="section" id="founder">
-    <span class="label reveal">Founder</span>
-    <div class="founder-image"></div>
-    <h2 class="section-heading reveal" style="--delay: 60ms">Sebastian Knørr</h2>
-    <p class="reveal" style="--delay: 120ms">Before AI, there was wood. Sebastian trained as a møbelsnekker — a Norwegian furniture craftsman — where precision and material honesty were non-negotiable. That discipline followed him into technology.</p>
-    <p class="reveal" style="--delay: 160ms">He co-founded Nordic AI and Com2.ai, and developed the QuestAI™ framework independently — a philosophy of AI that questions rather than answers, that creates presence through curiosity rather than information. He speaks internationally on responsible physical AI deployment and the psychological frontier of human–machine interaction.</p>
-    <p class="reveal" style="--delay: 200ms">Canal Creatures was co-founded with designer Coco — Qiongke Li. Sebastian comes from the Norwegian mountains. That matters.</p>
-  </section>
-
-  <!-- Vision -->
-  <section id="vision">
-    <div class="section-inner">
-      <span class="label reveal">What Comes Next</span>
-      <h2 class="section-heading reveal" style="--delay: 60ms">A world you can walk through.</h2>
-      <p class="reveal" style="--delay: 120ms">We are building a 3D marketplace unlike anything that exists today. Not a game. Not a metaverse. A place where you arrive as a character, move through themed environments — a blacksmith's forge, an axe-maker's workshop, a tailor's hall — and purchase real things from real brands in an experience that feels like play.</p>
-      <p class="reveal" style="--delay: 160ms">Digital real estate for the world's best brands. An open invitation to artists and world-builders. Revenue that flows in both directions. This is not gaming infrastructure repurposed for commerce — it is commerce reimagined from the ground up.</p>
-      <p class="reveal" style="--delay: 200ms">We are inviting artists, craftspeople, and builders to come make something beautiful with us.</p>
-    </div>
-  </section>
-
-  <!-- Partner CTA -->
-  <section id="partner">
-    <div class="partner-inner">
-      <span class="label reveal">Become a Partner</span>
-      <h2 class="section-heading reveal" style="--delay: 60ms">If you see what we see, let's talk.</h2>
-      <p class="reveal" style="--delay: 100ms">We are selective about early partners. We are looking for organisations that build physical products and understand that the software inside them carries responsibility.</p>
-
-      <form id="partner-form" novalidate>
-        <div class="form-grid">
-          <input class="full" type="text" name="name" placeholder="Your name" autocomplete="name" required>
-          <input type="text" name="company" placeholder="Company" autocomplete="organization" required>
-          <input type="text" name="role" placeholder="Your role" autocomplete="organization-title" required>
-          <textarea class="full" name="message" placeholder="What are you building?" required></textarea>
-          <button type="submit" class="btn full">Send</button>
-        </div>
-        <p class="form-success" id="form-success">We'll be in touch.</p>
+      <form id="form">
+        <input type="text" id="name" placeholder="Your name" autocomplete="name" />
+        <input type="email" id="email" placeholder="Your email" required autocomplete="email" />
+        <button type="submit" id="btn">Notify me</button>
+        <p class="message" id="msg"></p>
       </form>
     </div>
-  </section>
+  </div>
 
-  <!-- Footer -->
-  <footer>
-    <p>© 2026 CoHonon Inc. &nbsp;·&nbsp; <a href="mailto:contact@cohonon.com">contact@cohonon.com</a></p>
-  </footer>
+  <script>
+    const API = 'https://cohonon-platform-production.up.railway.app'
 
-  <script src="main.js"></script>
+    document.getElementById('form').addEventListener('submit', async function(e) {
+      e.preventDefault()
+      const btn = document.getElementById('btn')
+      const msg = document.getElementById('msg')
+      const email = document.getElementById('email').value.trim()
+      const name = document.getElementById('name').value.trim()
+
+      btn.disabled = true
+      btn.textContent = 'Sending…'
+      msg.className = 'message'
+      msg.textContent = ''
+
+      try {
+        const res = await fetch(`${API}/api/subscribe`, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ email, name, source: 'landing' }),
+        })
+
+        if (res.ok) {
+          msg.className = 'message success'
+          msg.textContent = "You're on the list. We'll be in touch."
+          document.getElementById('form').reset()
+        } else {
+          throw new Error()
+        }
+      } catch {
+        msg.className = 'message error'
+        msg.textContent = 'Something went wrong. Try again.'
+      } finally {
+        btn.disabled = false
+        btn.textContent = 'Notify me'
+      }
+    })
+  </script>
 </body>
 </html>
