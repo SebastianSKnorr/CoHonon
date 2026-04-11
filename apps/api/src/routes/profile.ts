@@ -33,9 +33,11 @@ const addressSchema = z.object({
   city: z.string().min(1),
   state: z.string().optional(),
   postalCode: z.string().min(1),
-  country: z.string().length(2), // ISO 3166-1 alpha-2
+  country: z.string().length(2),
   isDefault: z.boolean().optional(),
 })
+
+const sec = [{ bearerAuth: [] }]
 
 async function authenticate(req: any, reply: any) {
   try {
@@ -47,7 +49,13 @@ async function authenticate(req: any, reply: any) {
 
 export async function profileRoutes(app: FastifyInstance) {
   // GET /api/profile
-  app.get('/profile', async (req, reply) => {
+  app.get('/profile', {
+    schema: {
+      tags: ['Profile'],
+      summary: 'Get full profile — addresses, counts, character',
+      security: sec,
+    },
+  }, async (req, reply) => {
     const auth = await authenticate(req, reply)
     if (auth !== undefined) return auth
 
@@ -64,7 +72,29 @@ export async function profileRoutes(app: FastifyInstance) {
   })
 
   // PATCH /api/profile
-  app.patch('/profile', async (req, reply) => {
+  app.patch('/profile', {
+    schema: {
+      tags: ['Profile'],
+      summary: 'Update profile fields',
+      security: sec,
+      body: {
+        type: 'object',
+        properties: {
+          name: { type: 'string' },
+          firstName: { type: 'string' },
+          lastName: { type: 'string' },
+          phone: { type: 'string', description: 'E.164 format: +4712345678' },
+          language: { type: 'string', description: 'BCP-47: nb, en, de' },
+          timezone: { type: 'string', description: 'IANA: Europe/Oslo' },
+          avatarUrl: { type: 'string' },
+          bio: { type: 'string', maxLength: 500 },
+          dateOfBirth: { type: 'string', format: 'date-time' },
+          consentAI: { type: 'boolean', description: 'Enables AI-inferred observations (GDPR gate)' },
+          character: { type: 'object', description: 'Avatar appearance and world preferences' },
+        },
+      },
+    },
+  }, async (req, reply) => {
     const auth = await authenticate(req, reply)
     if (auth !== undefined) return auth
 
@@ -85,8 +115,13 @@ export async function profileRoutes(app: FastifyInstance) {
 
   // ── Addresses ────────────────────────────────────────────────────────────────
 
-  // GET /api/profile/addresses
-  app.get('/profile/addresses', async (req, reply) => {
+  app.get('/profile/addresses', {
+    schema: {
+      tags: ['Addresses'],
+      summary: 'List all addresses for the authenticated user',
+      security: sec,
+    },
+  }, async (req, reply) => {
     const auth = await authenticate(req, reply)
     if (auth !== undefined) return auth
 
@@ -97,8 +132,29 @@ export async function profileRoutes(app: FastifyInstance) {
     return addresses
   })
 
-  // POST /api/profile/addresses
-  app.post('/profile/addresses', async (req, reply) => {
+  app.post('/profile/addresses', {
+    schema: {
+      tags: ['Addresses'],
+      summary: 'Add a new address',
+      security: sec,
+      body: {
+        type: 'object',
+        required: ['firstName', 'lastName', 'line1', 'city', 'postalCode', 'country'],
+        properties: {
+          label: { type: 'string', description: 'Home, Work, Warehouse…' },
+          firstName: { type: 'string' },
+          lastName: { type: 'string' },
+          line1: { type: 'string' },
+          line2: { type: 'string' },
+          city: { type: 'string' },
+          state: { type: 'string' },
+          postalCode: { type: 'string' },
+          country: { type: 'string', minLength: 2, maxLength: 2, description: 'ISO 3166-1 alpha-2: NO, US, GB' },
+          isDefault: { type: 'boolean' },
+        },
+      },
+    },
+  }, async (req, reply) => {
     const auth = await authenticate(req, reply)
     if (auth !== undefined) return auth
 
@@ -107,7 +163,6 @@ export async function profileRoutes(app: FastifyInstance) {
 
     const userId = (req.user as any).id
 
-    // If setting as default, unset existing default first
     if (body.data.isDefault) {
       await prisma.address.updateMany({
         where: { userId, isDefault: true },
@@ -121,8 +176,14 @@ export async function profileRoutes(app: FastifyInstance) {
     return reply.status(201).send(address)
   })
 
-  // DELETE /api/profile/addresses/:id
-  app.delete('/profile/addresses/:id', async (req, reply) => {
+  app.delete('/profile/addresses/:id', {
+    schema: {
+      tags: ['Addresses'],
+      summary: 'Delete an address',
+      security: sec,
+      params: { type: 'object', properties: { id: { type: 'string' } } },
+    },
+  }, async (req, reply) => {
     const auth = await authenticate(req, reply)
     if (auth !== undefined) return auth
 
@@ -136,10 +197,16 @@ export async function profileRoutes(app: FastifyInstance) {
     return reply.status(204).send()
   })
 
-  // ── Observations (knowledge graph) ────────────────────────────────────────────
+  // ── Knowledge Graph ────────────────────────────────────────────────────────
 
-  // GET /api/profile/observations
-  app.get('/profile/observations', async (req, reply) => {
+  app.get('/profile/observations', {
+    schema: {
+      tags: ['Knowledge Graph'],
+      summary: 'Get user observations — what the platform has learned about this user',
+      description: 'Returns behavioral observations, preferences, facts, and (with consentAI=true) inferred insights. This is the live memory of the user inside the platform.',
+      security: sec,
+    },
+  }, async (req, reply) => {
     const auth = await authenticate(req, reply)
     if (auth !== undefined) return auth
 
@@ -155,8 +222,14 @@ export async function profileRoutes(app: FastifyInstance) {
     return observations
   })
 
-  // GET /api/profile/entities
-  app.get('/profile/entities', async (req, reply) => {
+  app.get('/profile/entities', {
+    schema: {
+      tags: ['Knowledge Graph'],
+      summary: 'Get user entities and their relations',
+      description: 'Entities are nodes in the user\'s knowledge graph — stores they know, products they\'ve seen, preferences detected. Relations connect them.',
+      security: sec,
+    },
+  }, async (req, reply) => {
     const auth = await authenticate(req, reply)
     if (auth !== undefined) return auth
 

@@ -17,7 +17,23 @@ const loginSchema = z.object({
 })
 
 export async function authRoutes(app: FastifyInstance) {
-  app.post('/register', async (req, reply) => {
+  app.post('/register', {
+    schema: {
+      tags: ['Auth'],
+      summary: 'Register a new user',
+      body: {
+        type: 'object',
+        required: ['email', 'password', 'name'],
+        properties: {
+          email: { type: 'string', format: 'email' },
+          password: { type: 'string', minLength: 8 },
+          name: { type: 'string' },
+          firstName: { type: 'string' },
+          lastName: { type: 'string' },
+        },
+      },
+    },
+  }, async (req, reply) => {
     const body = registerSchema.safeParse(req.body)
     if (!body.success) return reply.status(400).send({ error: body.error.flatten() })
 
@@ -40,7 +56,20 @@ export async function authRoutes(app: FastifyInstance) {
     return reply.status(201).send({ user, token })
   })
 
-  app.post('/login', async (req, reply) => {
+  app.post('/login', {
+    schema: {
+      tags: ['Auth'],
+      summary: 'Login and receive a JWT token',
+      body: {
+        type: 'object',
+        required: ['email', 'password'],
+        properties: {
+          email: { type: 'string', format: 'email' },
+          password: { type: 'string' },
+        },
+      },
+    },
+  }, async (req, reply) => {
     const body = loginSchema.safeParse(req.body)
     if (!body.success) return reply.status(400).send({ error: body.error.flatten() })
 
@@ -54,7 +83,13 @@ export async function authRoutes(app: FastifyInstance) {
     return reply.send({ user: { id: user.id, email: user.email, name: user.name }, token })
   })
 
-  app.get('/me', async (req, reply) => {
+  app.get('/me', {
+    schema: {
+      tags: ['Auth'],
+      summary: 'Get the currently authenticated user',
+      security: [{ bearerAuth: [] }],
+    },
+  }, async (req, reply) => {
     try {
       await req.jwtVerify()
     } catch {
