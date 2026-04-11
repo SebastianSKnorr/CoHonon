@@ -7,6 +7,8 @@ const registerSchema = z.object({
   email: z.string().email(),
   password: z.string().min(8),
   name: z.string().min(1),
+  firstName: z.string().min(1).optional(),
+  lastName: z.string().min(1).optional(),
 })
 
 const loginSchema = z.object({
@@ -24,8 +26,14 @@ export async function authRoutes(app: FastifyInstance) {
 
     const hashed = await hashPassword(body.data.password)
     const user = await prisma.user.create({
-      data: { email: body.data.email, password: hashed, name: body.data.name },
-      select: { id: true, email: true, name: true, createdAt: true },
+      data: {
+        email: body.data.email,
+        password: hashed,
+        name: body.data.name,
+        firstName: body.data.firstName,
+        lastName: body.data.lastName,
+      },
+      select: { id: true, email: true, name: true, firstName: true, lastName: true, createdAt: true },
     })
 
     const token = app.jwt.sign({ id: user.id, email: user.email })
@@ -54,7 +62,11 @@ export async function authRoutes(app: FastifyInstance) {
     }
     const user = await prisma.user.findUnique({
       where: { id: (req.user as any).id },
-      select: { id: true, email: true, name: true, createdAt: true },
+      select: {
+        id: true, email: true, name: true, firstName: true, lastName: true,
+        phone: true, language: true, timezone: true, avatarUrl: true,
+        bio: true, role: true, consentAI: true, createdAt: true,
+      },
     })
     if (!user) return reply.status(404).send({ error: 'User not found' })
     return user

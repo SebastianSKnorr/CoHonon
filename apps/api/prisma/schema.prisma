@@ -7,29 +7,125 @@ datasource db {
   url      = env("DATABASE_PUBLIC_URL")
 }
 
-model User {
-  id        String   @id @default(cuid())
-  email     String   @unique
-  password  String
-  name      String
-  role      Role     @default(USER)
-  balance   Float    @default(0)
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
+// ── User ─────────────────────────────────────────────────────────────────────
 
-  orders    Order[]
-  stores    Store[]
+model User {
+  id          String    @id @default(cuid())
+  email       String    @unique
+  password    String
+  name        String    // display name / username
+  firstName   String?
+  lastName    String?
+  phone       String?   // E.164 format: +4712345678
+  language    String?   // BCP-47: "nb", "en", "de"
+  timezone    String?   // IANA: "Europe/Oslo"
+  avatarUrl   String?
+  bio         String?
+  dateOfBirth DateTime?
+  consentAI   Boolean   @default(false) // gates INFERRED observations (GDPR)
+  character   Json?     // avatar appearance, world preferences
+  role        Role      @default(USER)
+  balance     Float     @default(0)
+  createdAt   DateTime  @default(now())
+  updatedAt   DateTime  @updatedAt
+
+  addresses    Address[]
+  orders       Order[]
+  stores       Store[]
+  entities     UserEntity[]
+  observations UserObservation[]
 }
 
-model World {
-  id          String     @id @default(cuid())
-  name        String
-  slug        String     @unique
-  theme       String
-  published   Boolean    @default(false)
-  createdAt   DateTime   @default(now())
+model Address {
+  id         String   @id @default(cuid())
+  userId     String
+  user       User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  label      String?  // "Home", "Work", "Warehouse"
+  firstName  String
+  lastName   String
+  line1      String
+  line2      String?
+  city       String
+  state      String?
+  postalCode String
+  country    String   // ISO 3166-1 alpha-2: "NO", "US", "GB"
+  isDefault  Boolean  @default(false)
+  createdAt  DateTime @default(now())
 
-  locations   Location[]
+  @@index([userId])
+}
+
+// ── Knowledge Graph ───────────────────────────────────────────────────────────
+
+model UserEntity {
+  id          String     @id @default(cuid())
+  userId      String
+  user        User       @relation(fields: [userId], references: [id], onDelete: Cascade)
+  type        EntityType
+  name        String
+  description String?
+  metadata    Json       @default("{}")
+  createdAt   DateTime   @default(now())
+  updatedAt   DateTime   @updatedAt
+
+  outgoing     UserRelation[]    @relation("RelationSource")
+  incoming     UserRelation[]    @relation("RelationTarget")
+  observations UserObservation[]
+
+  @@unique([userId, type, name])
+  @@index([userId])
+  @@index([type])
+}
+
+model UserRelation {
+  id             String       @id @default(cuid())
+  sourceEntityId String
+  sourceEntity   UserEntity   @relation("RelationSource", fields: [sourceEntityId], references: [id], onDelete: Cascade)
+  targetEntityId String
+  targetEntity   UserEntity   @relation("RelationTarget", fields: [targetEntityId], references: [id], onDelete: Cascade)
+  type           RelationType
+  strength       Float        @default(1.0) // 0.0–1.0 confidence
+  context        String?      // why this relation exists
+  metadata       Json         @default("{}")
+  createdAt      DateTime     @default(now())
+  updatedAt      DateTime     @updatedAt
+
+  @@unique([sourceEntityId, targetEntityId, type])
+  @@index([sourceEntityId])
+  @@index([targetEntityId])
+}
+
+model UserObservation {
+  id         String            @id @default(cuid())
+  userId     String
+  user       User              @relation(fields: [userId], references: [id], onDelete: Cascade)
+  entityId   String?
+  entity     UserEntity?       @relation(fields: [entityId], references: [id], onDelete: SetNull)
+  type       ObservationType
+  content    String            // e.g. "user visited Blacksmith store twice"
+  confidence Float             @default(1.0) // 0.0–1.0
+  source     ObservationSource
+  expiresAt  DateTime?
+  metadata   Json              @default("{}")
+  createdAt  DateTime          @default(now())
+
+  @@index([userId])
+  @@index([entityId])
+  @@index([type])
+  @@index([createdAt])
+}
+
+// ── Worlds & Commerce ─────────────────────────────────────────────────────────
+
+model World {
+  id        String     @id @default(cuid())
+  name      String
+  slug      String     @unique
+  theme     String
+  published Boolean    @default(false)
+  createdAt DateTime   @default(now())
+
+  locations Location[]
 }
 
 model Location {
@@ -57,7 +153,7 @@ model Store {
   createdAt   DateTime  @default(now())
   updatedAt   DateTime  @updatedAt
 
-  products    Product[]
+  products Product[]
 }
 
 model Product {
@@ -73,7 +169,7 @@ model Product {
   createdAt   DateTime @default(now())
   updatedAt   DateTime @updatedAt
 
-  orderItems  OrderItem[]
+  orderItems OrderItem[]
 }
 
 model Order {
@@ -85,8 +181,8 @@ model Order {
   createdAt DateTime    @default(now())
   updatedAt DateTime    @updatedAt
 
-  items     OrderItem[]
-  shipment  Shipment?
+  items    OrderItem[]
+  shipment Shipment?
 }
 
 model OrderItem {
@@ -100,14 +196,16 @@ model OrderItem {
 }
 
 model Shipment {
-  id          String    @id @default(cuid())
-  orderId     String    @unique
-  order       Order     @relation(fields: [orderId], references: [id])
-  carrier     String?
-  tracking    String?
+  id           String    @id @default(cuid())
+  orderId      String    @unique
+  order        Order     @relation(fields: [orderId], references: [id])
+  carrier      String?
+  tracking     String?
   dispatchedAt DateTime?
   deliveredAt  DateTime?
 }
+
+// ── Enums ─────────────────────────────────────────────────────────────────────
 
 enum Role {
   USER
@@ -122,4 +220,37 @@ enum OrderStatus {
   SHIPPED
   DELIVERED
   CANCELLED
+}
+
+enum EntityType {
+  USER
+  STORE
+  PRODUCT
+  CATEGORY
+  PREFERENCE
+  BEHAVIOR
+}
+
+enum RelationType {
+  VISITED
+  PURCHASED_FROM
+  PREFERRED
+  FOLLOWS
+  SIMILAR_TO
+  SEARCHED_FOR
+}
+
+enum ObservationType {
+  BEHAVIOR
+  PREFERENCE
+  FACT
+  INTERACTION
+  INFERRED
+}
+
+enum ObservationSource {
+  TRANSACTION
+  INTERACTION
+  INFERENCE
+  MANUAL
 }
