@@ -1,5 +1,6 @@
 import type { FastifyInstance } from 'fastify'
 import { z } from 'zod'
+import { Prisma } from '@prisma/client'
 import { prisma } from '../services/db'
 
 const profileSelect = {
@@ -75,6 +76,7 @@ export async function profileRoutes(app: FastifyInstance) {
       data: {
         ...body.data,
         dateOfBirth: body.data.dateOfBirth ? new Date(body.data.dateOfBirth) : undefined,
+        character: body.data.character as Prisma.InputJsonValue | undefined,
       },
       select: profileSelect,
     })
