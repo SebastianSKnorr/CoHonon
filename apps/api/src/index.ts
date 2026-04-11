@@ -6,6 +6,7 @@ import swagger from '@fastify/swagger'
 import swaggerUi from '@fastify/swagger-ui'
 import { authRoutes } from './routes/auth'
 import { profileRoutes } from './routes/profile'
+import { subscribeRoutes } from './routes/subscribe'
 
 async function main() {
   const app = Fastify({ logger: true })
@@ -93,6 +94,7 @@ async function main() {
   // Routes
   await app.register(authRoutes, { prefix: '/api/auth' })
   await app.register(profileRoutes, { prefix: '/api' })
+  await app.register(subscribeRoutes, { prefix: '/api' })
 
   // Start
   const port = Number(process.env.PORT) || 8080

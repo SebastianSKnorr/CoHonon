@@ -115,6 +115,16 @@ model UserObservation {
   @@index([createdAt])
 }
 
+// ── Subscribers ───────────────────────────────────────────────────────────────
+
+model Subscriber {
+  id        String   @id @default(cuid())
+  email     String   @unique
+  name      String?
+  source    String   @default("landing") // where they signed up from
+  createdAt DateTime @default(now())
+}
+
 // ── Worlds & Commerce ─────────────────────────────────────────────────────────
 
 model World {
