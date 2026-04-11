@@ -37,13 +37,14 @@ export async function authRoutes(app: FastifyInstance) {
     const body = registerSchema.safeParse(req.body)
     if (!body.success) return reply.status(400).send({ error: body.error.flatten() })
 
-    const existing = await prisma.user.findUnique({ where: { email: body.data.email } })
+    const email = body.data.email.toLowerCase()
+    const existing = await prisma.user.findUnique({ where: { email } })
     if (existing) return reply.status(409).send({ error: 'Email already registered' })
 
     const hashed = await hashPassword(body.data.password)
     const user = await prisma.user.create({
       data: {
-        email: body.data.email,
+        email,
         password: hashed,
         name: body.data.name,
         firstName: body.data.firstName,
@@ -73,7 +74,7 @@ export async function authRoutes(app: FastifyInstance) {
     const body = loginSchema.safeParse(req.body)
     if (!body.success) return reply.status(400).send({ error: body.error.flatten() })
 
-    const user = await prisma.user.findUnique({ where: { email: body.data.email } })
+    const user = await prisma.user.findUnique({ where: { email: body.data.email.toLowerCase() } })
     if (!user) return reply.status(401).send({ error: 'Invalid credentials' })
 
     const valid = await verifyPassword(body.data.password, user.password)
