@@ -1,0 +1,63 @@
+{
+  "nav.signin": "Inloggen",
+  "nav.partner": "Word partner →",
+
+  "hero.eyebrow": "NOORWEGEN · VEILIGE AI · FYSIEKE AANWEZIGHEID",
+  "hero.headline": "Objecten zijn gemaakt om vast te houden.<br/>CoHonon bouwde ze om te <em>vragen</em>.",
+  "hero.body": "CoHonon is de intelligentielaag voor fysieke metgezellen. Gebouwd op een decennium vakmanschap en drie jaar AI-infrastructuur. Het eerste platform dat wat je in handen houdt een reden geeft om je vast te houden.",
+  "hero.cta": "Word partner →",
+  "hero.scroll": "scroll",
+
+  "problem.eyebrow": "Het probleem",
+  "problem.p1": "<strong>Fysieke objecten zijn nooit zo geavanceerd geweest. En nooit zo stil.</strong>",
+  "problem.p2": "De AI die vandaag huizen binnentreedt luistert, volgt en levert. Geoptimaliseerd voor betrokkenheid. Niet voor vertrouwen.",
+  "problem.p3": "Kinderen verdienen beter. En de bedrijven die voor hen bouwen verdienen een platform dat hen dat laat bewijzen.",
+  "problem.p4": "Er is een kloof tussen wat een metgezel is en wat het zou kunnen zijn. CoHonon is gebouwd in die kloof.",
+
+  "platform.eyebrow": "HET PLATFORM · QUESTAI™",
+  "platform.01.title": "Vragen boven antwoorden",
+  "platform.01.body": "De meeste AI vertelt. CoHonon vraagt. Het QuestAI™-raamwerk bouwt aanwezigheid door nieuwsgierigheid — niet door informatieoverdracht. Het creëert verbinding zonder afhankelijkheid.",
+  "platform.02.title": "Ingebed, niet bewaakt",
+  "platform.02.body": "CoHonon draait op hardware. Het heeft de cloud niet nodig om aanwezig te voelen. Uw gegevens blijven waar ze thuishoren. De intelligentie is lokaal. De ervaring is echt.",
+  "platform.03.title": "Veilig vanaf dag één",
+  "platform.03.body": "Veiligheid is hier geen bijgedachte. Het is de grondleggende architectuur. Elke beslissing bij CoHonon begint met de vraag: zouden we dit geven aan een kind dat we liefhebben?",
+
+  "canal.eyebrow": "EERSTE GEBRUIKER · CANAL CREATURES · IN PRODUCTIE",
+  "canal.p1": "Canal Creatures is een limited-edition kunstobject en metgezel — ontworpen door Coco Li in Amsterdam, voorzien van intelligentie door CoHonon in Oslo. We kijken naar het produceren van de eerste Canal Creature met CoHonon begin 2027.",
+  "canal.p2": "<strong>Het is het bewijs dat wat we bouwen werkt. Niet in een lab. In de wereld.</strong>",
+
+  "founder.eyebrow": "SEBASTIAN KNØRR · OPRICHTER",
+  "founder.headline": "Gebouwd met handen, hart<br/>en <em>code</em>.",
+  "founder.p1": "Sebastian Knørr bracht een decennium door met meubelmaker zijn voordat hij bedrijven oprichtte. Vakdiploma met onderscheiding. Echt hout. Echte verbindingen. Het begrip dat alles wat de moeite waard is om te bouwen, langzaam gaat.",
+  "founder.p2": "Drie jaar geleden maakte hij de omslag. Hij was mede-oprichter van Nordic AI — een onderneming die praktische AI-infrastructuur bouwt voor echte bedrijven. Daarna Com2.ai — een privacygericht AI-platform gebouwd rond emotionele intelligentie en menselijke reflectie. Beide bedrijven delen hetzelfde grondbeginsel. CoHonon is waar dat beginsel een product wordt.",
+  "founder.p3": "CoHonon is waar de ambachtsman en de ingenieur eindelijk hetzelfde vertrek bewonen.",
+  "founder.close": "<em>Hij komt uit de Noorse bergen. Dat doet ertoe.</em>",
+
+  "vision.p1": "Er wordt een wereld gebouwd waar CoHonon-metgezellen niet zomaar op een plank staan.",
+  "vision.p2": "Waar ze een thuis hebben. Een geschiedenis. Een wereld die je kunt <em>betreden</em>.",
+  "vision.p3": "Die wereld komt eraan. Wij leggen het fundament.",
+
+  "partner.eyebrow": "WERK MET ONS",
+  "partner.headline": "U brengt de schaal.<br/>Wij brengen de <em>ziel</em>.",
+  "partner.body": "We spreken met hardwarefabrikanten, speelgoedbedrijven en strategische investeerders die begrijpen dat het volgende decennium van fysieke producten wordt bepaald door de intelligentie erin. Als dat u bent, willen we praten.",
+
+  "form.name": "Naam",
+  "form.name.ph": "Uw naam",
+  "form.email": "E-mail",
+  "form.email.ph": "u@bedrijf.com",
+  "form.company": "Bedrijf",
+  "form.company.ph": "Bedrijfsnaam",
+  "form.role": "Functie",
+  "form.role.ph": "Uw functie",
+  "form.message": "Bericht",
+  "form.message.ph": "Vertel ons wat u bouwt en waarom CoHonon voor u van belang is.",
+  "form.submit": "Verzenden →",
+  "form.sending": "Verzenden…",
+  "form.success": "We nemen contact op.",
+  "form.error": "Er is iets misgegaan. Probeer opnieuw.",
+
+  "partner.footnote": "CoHonon voert momenteel selectieve vroege partnerschapsgesprekken. We lezen elk bericht.",
+
+  "footer.tagline": "<em>Veilige AI. Fysieke aanwezigheid. Emotionele diepgang.</em>",
+  "footer.copy": "© 2026 CoHonon · Noorwegen"
+}

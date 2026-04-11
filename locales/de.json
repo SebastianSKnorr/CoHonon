@@ -1,0 +1,63 @@
+{
+  "nav.signin": "Anmelden",
+  "nav.partner": "Partner werden →",
+
+  "hero.eyebrow": "NORWEGEN · SICHERE KI · PHYSISCHE PRÄSENZ",
+  "hero.headline": "Objekte wurden zum Festhalten geschaffen.<br/>CoHonon baute sie, um zu <em>fragen</em>.",
+  "hero.body": "CoHonon ist die Intelligenzschicht für physische Begleiter. Aufgebaut auf einem Jahrzehnt Handwerk und drei Jahren KI-Infrastruktur. Die erste Plattform, die dem, was man in den Händen hält, einen Grund gibt, einen festzuhalten.",
+  "hero.cta": "Partner werden →",
+  "hero.scroll": "scrollen",
+
+  "problem.eyebrow": "Das Problem",
+  "problem.p1": "<strong>Physische Objekte waren noch nie so ausgereift. Und noch nie so still.</strong>",
+  "problem.p2": "Die KI, die heute in Häuser einzieht, hört zu, verfolgt und liefert. Sie ist auf Engagement optimiert. Nicht auf Vertrauen.",
+  "problem.p3": "Kinder verdienen Besseres. Und die Unternehmen, die für sie entwickeln, verdienen eine Plattform, die ihnen ermöglicht, das zu beweisen.",
+  "problem.p4": "Es gibt eine Lücke zwischen dem, was ein Begleiter ist, und dem, was er sein könnte. CoHonon ist in diese Lücke gebaut.",
+
+  "platform.eyebrow": "DIE PLATTFORM · QUESTAI™",
+  "platform.01.title": "Fragen statt Antworten",
+  "platform.01.body": "Die meiste KI erklärt. CoHonon fragt. Das QuestAI™-Framework baut Präsenz durch Neugier — nicht durch Informationsvermittlung. Es schafft Verbindung ohne Abhängigkeit.",
+  "platform.02.title": "Eingebettet, nicht überwacht",
+  "platform.02.body": "CoHonon läuft auf Hardware. Es braucht die Cloud nicht, um präsent zu wirken. Ihre Daten bleiben dort, wo sie hingehören. Die Intelligenz ist lokal. Die Erfahrung ist real.",
+  "platform.03.title": "Sicher von Anfang an",
+  "platform.03.body": "Sicherheit ist hier keine nachträgliche Maßnahme. Sie ist die Gründungsarchitektur. Jede Entscheidung bei CoHonon beginnt mit der Frage: Würden wir das einem Kind geben, das wir lieben?",
+
+  "canal.eyebrow": "ERSTER NUTZER · CANAL CREATURES · IN PRODUKTION",
+  "canal.p1": "Canal Creatures ist ein Kunstobjekt und Begleiter in limitierter Auflage — entworfen von Coco Li in Amsterdam, mit Intelligenz versehen von CoHonon in Oslo. Wir planen, das erste Canal Creature mit CoHonon Anfang 2027 zu produzieren.",
+  "canal.p2": "<strong>Es ist der Beweis, dass das, was wir bauen, funktioniert. Nicht im Labor. In der Welt.</strong>",
+
+  "founder.eyebrow": "SEBASTIAN KNØRR · GRÜNDER",
+  "founder.headline": "Gebaut mit Händen, Herz<br/>und <em>Code</em>.",
+  "founder.p1": "Sebastian Knørr verbrachte ein Jahrzehnt damit, Möbel zu bauen, bevor er Unternehmen gründete. Auszeichnung als Geselle. Echtes Holz. Echte Verbindungen. Das Verständnis, dass alles, was es wert ist gebaut zu werden, Zeit braucht.",
+  "founder.p2": "Vor drei Jahren vollzog er die Wende. Er gründete Nordic AI mit — ein Unternehmen, das praktische KI-Infrastruktur für echte Unternehmen entwickelt. Dann Com2.ai — eine datenschutzorientierte KI-Plattform rund um emotionale Intelligenz und menschliche Reflexion. Beide Unternehmen teilen dasselbe Gründungsprinzip. CoHonon ist der Ort, an dem dieses Prinzip zu einem Produkt wird.",
+  "founder.p3": "CoHonon ist der Ort, an dem Handwerker und Ingenieur endlich denselben Raum bewohnen.",
+  "founder.close": "<em>Er kommt aus den norwegischen Bergen. Das hat Bedeutung.</em>",
+
+  "vision.p1": "Es wird eine Welt gebaut, in der CoHonon-Begleiter nicht nur in einem Regal stehen.",
+  "vision.p2": "Wo sie ein Zuhause haben. Eine Geschichte. Eine Welt, die man <em>betreten</em> kann.",
+  "vision.p3": "Diese Welt kommt. Wir legen ihr Fundament.",
+
+  "partner.eyebrow": "ARBEITEN SIE MIT UNS",
+  "partner.headline": "Sie bringen die Skalierung.<br/>Wir bringen die <em>Seele</em>.",
+  "partner.body": "Wir sprechen mit Hardwareherstellern, Spielzeugfirmen und strategischen Investoren, die verstehen, dass das nächste Jahrzehnt physischer Produkte durch die Intelligenz in ihnen definiert wird. Wenn das Sie sind, möchten wir sprechen.",
+
+  "form.name": "Name",
+  "form.name.ph": "Ihr Name",
+  "form.email": "E-Mail",
+  "form.email.ph": "sie@unternehmen.com",
+  "form.company": "Unternehmen",
+  "form.company.ph": "Unternehmensname",
+  "form.role": "Position",
+  "form.role.ph": "Ihre Position",
+  "form.message": "Nachricht",
+  "form.message.ph": "Erzählen Sie uns, was Sie entwickeln und warum CoHonon für Sie wichtig ist.",
+  "form.submit": "Senden →",
+  "form.sending": "Wird gesendet…",
+  "form.success": "Wir melden uns bei Ihnen.",
+  "form.error": "Etwas ist schiefgelaufen. Bitte versuchen Sie es erneut.",
+
+  "partner.footnote": "CoHonon befindet sich derzeit in selektiven frühen Partnerschaftsgesprächen. Wir lesen jede Nachricht.",
+
+  "footer.tagline": "<em>Sichere KI. Physische Präsenz. Emotionale Tiefe.</em>",
+  "footer.copy": "© 2026 CoHonon · Norwegen"
+}

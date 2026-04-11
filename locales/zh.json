@@ -1,0 +1,63 @@
+{
+  "nav.signin": "登录",
+  "nav.partner": "成为合作伙伴 →",
+
+  "hero.eyebrow": "挪威 · 安全人工智能 · 实体存在",
+  "hero.headline": "物件生来为了被握持。<br/>CoHonon 让它们学会<em>提问</em>。",
+  "hero.body": "CoHonon 是实体伴侣的智能层。建立在十年工艺积累与三年人工智能基础设施之上。首个赋予你手中之物回握你的理由的平台。",
+  "hero.cta": "成为合作伙伴 →",
+  "hero.scroll": "滚动",
+
+  "problem.eyebrow": "问题所在",
+  "problem.p1": "<strong>实体物件从未如此精密复杂，也从未如此沉默。</strong>",
+  "problem.p2": "今天进入家庭的人工智能在倾听、追踪与交付。它为参与度而优化，而非为信任。",
+  "problem.p3": "孩子们值得更好的。而为他们打造产品的企业，理应拥有一个让他们证明这一点的平台。",
+  "problem.p4": "伴侣的现状与其潜力之间存在一道鸿沟。CoHonon 正是在这道鸿沟中构建的。",
+
+  "platform.eyebrow": "平台 · QUESTAI™",
+  "platform.01.title": "以问代答",
+  "platform.01.body": "大多数人工智能在陈述，CoHonon 在提问。QuestAI™ 框架通过好奇心建立存在感——而非信息传递。它创造连接，而不制造依赖。",
+  "platform.02.title": "嵌入，而非监控",
+  "platform.02.body": "CoHonon 在硬件中运行。无需云端即可感受存在。您的数据留在它应在的地方。智能在本地，体验是真实的。",
+  "platform.03.title": "从第一天起便安全",
+  "platform.03.body": "安全不是这里的事后补丁，而是奠基架构。CoHonon 的每一个决定，都始于同一个问题：我们会把这个给我们爱的孩子吗？",
+
+  "canal.eyebrow": "首位用户 · CANAL CREATURES · 生产中",
+  "canal.p1": "Canal Creatures 是一件限量版艺术品与伴侣——由 Coco Li 在阿姆斯特丹设计，由 CoHonon 在奥斯陆注入智能。我们计划于 2027 年初与 CoHonon 共同生产第一只 Canal Creature。",
+  "canal.p2": "<strong>这证明了我们所构建的东西是有效的。不在实验室里，而在真实世界中。</strong>",
+
+  "founder.eyebrow": "SEBASTIAN KNØRR · 创始人",
+  "founder.headline": "以双手、以心，<br/>以<em>代码</em>而建。",
+  "founder.p1": "Sebastian Knørr 在创办公司之前，用十年时间制作家具。以优异成绩完成学徒期。真实的木材。真实的榫卯。他深知，凡是值得建造的，都需要时间。",
+  "founder.p2": "三年前，他转向了。他联合创立了 Nordic AI——一家为真实企业构建实用人工智能基础设施的公司。随后是 Com2.ai——一个围绕情感智能与人类反思的隐私优先人工智能平台。两家公司共享同一创始原则。CoHonon 是那一原则成为产品的地方。",
+  "founder.p3": "CoHonon 是工匠与工程师最终共处一室的地方。",
+  "founder.close": "<em>他来自挪威的山区。这很重要。</em>",
+
+  "vision.p1": "有一个世界正在被构建，在那里，CoHonon 的伴侣不只是摆在架子上。",
+  "vision.p2": "它们有家园，有历史，有一个你可以<em>走入</em>的世界。",
+  "vision.p3": "那个世界即将到来。我们正在铺设它的地基。",
+
+  "partner.eyebrow": "与我们合作",
+  "partner.headline": "您带来规模，<br/>我们带来<em>灵魂</em>。",
+  "partner.body": "我们正在与硬件制造商、玩具公司和战略投资者展开对话——那些明白下一个十年的实体产品将由其内部智能定义的人。如果您正是其中之一，我们期待交流。",
+
+  "form.name": "姓名",
+  "form.name.ph": "您的姓名",
+  "form.email": "电子邮件",
+  "form.email.ph": "您@公司.com",
+  "form.company": "公司",
+  "form.company.ph": "公司名称",
+  "form.role": "职位",
+  "form.role.ph": "您的职位",
+  "form.message": "留言",
+  "form.message.ph": "告诉我们您在构建什么，以及 CoHonon 对您意味着什么。",
+  "form.submit": "发送 →",
+  "form.sending": "发送中…",
+  "form.success": "我们会与您联系。",
+  "form.error": "出了点问题，请重试。",
+
+  "partner.footnote": "CoHonon 目前正在进行有选择性的早期合作洽谈。我们阅读每一条留言。",
+
+  "footer.tagline": "<em>安全人工智能。实体存在。情感深度。</em>",
+  "footer.copy": "© 2026 CoHonon · 挪威"
+}

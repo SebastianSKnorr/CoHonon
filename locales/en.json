@@ -1,0 +1,63 @@
+{
+  "nav.signin": "Sign in",
+  "nav.partner": "Partner with us →",
+
+  "hero.eyebrow": "NORWAY · SAFE AI · PHYSICAL PRESENCE",
+  "hero.headline": "Objects were built to be held.<br/>CoHonon built them to <em>ask</em>.",
+  "hero.body": "CoHonon is the intelligence layer for physical companions. Built on a decade of craft and three years of AI infrastructure. The first platform to give what you hold in your hands a reason to hold you back.",
+  "hero.cta": "Partner with us →",
+  "hero.scroll": "scroll",
+
+  "problem.eyebrow": "The Problem",
+  "problem.p1": "<strong>Physical objects have never been more sophisticated. And never more silent.</strong>",
+  "problem.p2": "The AI entering homes today listens, tracks, and delivers. It is optimised for engagement. It is not optimised for trust.",
+  "problem.p3": "Children deserve better. And the companies building for them deserve a platform that lets them prove it.",
+  "problem.p4": "There is a gap between what a companion is and what it could be. CoHonon is built inside that gap.",
+
+  "platform.eyebrow": "THE PLATFORM · QUESTAI™",
+  "platform.01.title": "Questions over answers",
+  "platform.01.body": "Most AI tells. CoHonon asks. The QuestAI™ framework builds presence through curiosity — not information delivery. It creates connection without dependency.",
+  "platform.02.title": "Embedded, not surveilled",
+  "platform.02.body": "CoHonon runs in hardware. It does not require the cloud to feel present. Your data stays where it belongs. The intelligence is local. The experience is real.",
+  "platform.03.title": "Safe from day one",
+  "platform.03.body": "Safety is not a retrofit here. It is the founding architecture. Every decision at CoHonon begins with the question: would we give this to a child we love?",
+
+  "canal.eyebrow": "FIRST ADOPTER · CANAL CREATURES · IN PRODUCTION",
+  "canal.p1": "Canal Creatures is a limited-edition art object and companion — designed by Coco Li in Amsterdam, intelligence-layered by CoHonon in Oslo. We are looking at producing the first Canal Creature with CoHonon in early 2027.",
+  "canal.p2": "<strong>It is proof that what we are building works. Not in a lab. In the world.</strong>",
+
+  "founder.eyebrow": "SEBASTIAN KNØRR · FOUNDER",
+  "founder.headline": "Built by hand, heart<br/>and <em>code</em>.",
+  "founder.p1": "Sebastian Knørr spent a decade making furniture before he made companies. Distinction-grade apprenticeship. Real wood. Real joints. The understanding that anything worth building is slow.",
+  "founder.p2": "Three years ago he made the turn. He co-founded Nordic AI — a venture building practical AI infrastructure for real businesses. Then Com2.ai — a privacy-first AI platform built around emotional intelligence and human reflection. Both companies share the same founding principle. CoHonon is where that principle becomes a product.",
+  "founder.p3": "CoHonon is where the craftsman and the engineer finally occupy the same room.",
+  "founder.close": "<em>He comes from the Norwegian mountains. That matters.</em>",
+
+  "vision.p1": "There is a world being built where CoHonon companions do not just sit on a shelf.",
+  "vision.p2": "Where they have a home. A history. A world you can <em>enter</em>.",
+  "vision.p3": "That world is coming. We are laying its foundation.",
+
+  "partner.eyebrow": "WORK WITH US",
+  "partner.headline": "You bring the scale.<br/>We bring the <em>soul</em>.",
+  "partner.body": "We are speaking with hardware manufacturers, toy companies, and strategic investors who understand that the next decade of physical products will be defined by the intelligence inside them. If that is you, we want to talk.",
+
+  "form.name": "Name",
+  "form.name.ph": "Your name",
+  "form.email": "Email",
+  "form.email.ph": "you@company.com",
+  "form.company": "Company",
+  "form.company.ph": "Company name",
+  "form.role": "Role",
+  "form.role.ph": "Your role",
+  "form.message": "Message",
+  "form.message.ph": "Tell us what you're building and why CoHonon matters to you.",
+  "form.submit": "Send →",
+  "form.sending": "Sending…",
+  "form.success": "We'll be in touch.",
+  "form.error": "Something went wrong. Try again.",
+
+  "partner.footnote": "CoHonon is currently in selective early partnership conversations. We read every message.",
+
+  "footer.tagline": "<em>Safe AI. Physical presence. Emotional depth.</em>",
+  "footer.copy": "© 2026 CoHonon · Norway"
+}

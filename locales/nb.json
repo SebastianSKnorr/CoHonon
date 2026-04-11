@@ -1,0 +1,63 @@
+{
+  "nav.signin": "Logg inn",
+  "nav.partner": "Bli partner →",
+
+  "hero.eyebrow": "NORGE · TRYGG KI · FYSISK TILSTEDEVÆRELSE",
+  "hero.headline": "Objekter er skapt for å holdes.<br/>CoHonon bygde dem for å <em>spørre</em>.",
+  "hero.body": "CoHonon er intelligenslaget for fysiske ledsagere. Bygget på ti år med håndverk og tre år med KI-infrastruktur. Den første plattformen som gir det du holder i hånden en grunn til å holde deg tilbake.",
+  "hero.cta": "Bli partner →",
+  "hero.scroll": "scroll",
+
+  "problem.eyebrow": "Problemet",
+  "problem.p1": "<strong>Fysiske objekter har aldri vært mer sofistikerte. Og aldri mer stille.</strong>",
+  "problem.p2": "KI-en som i dag entrer hjemmene lytter, sporer og leverer. Den er optimert for engasjement. Ikke for tillit.",
+  "problem.p3": "Barn fortjener bedre. Og selskapene som bygger for dem fortjener en plattform som lar dem bevise det.",
+  "problem.p4": "Det finnes et gap mellom hva en ledsager er og hva den kunne vært. CoHonon er bygget inni det gapet.",
+
+  "platform.eyebrow": "PLATTFORMEN · QUESTAI™",
+  "platform.01.title": "Spørsmål fremfor svar",
+  "platform.01.body": "De fleste KI-er forteller. CoHonon spør. QuestAI™-rammeverket bygger tilstedeværelse gjennom nysgjerrighet — ikke informasjonslevering. Det skaper forbindelse uten avhengighet.",
+  "platform.02.title": "Innebygd, ikke overvåket",
+  "platform.02.body": "CoHonon kjører i maskinvare. Det krever ikke skyen for å føles nærværende. Dataene dine blir der de hører hjemme. Intelligensen er lokal. Opplevelsen er ekte.",
+  "platform.03.title": "Trygt fra dag én",
+  "platform.03.body": "Sikkerhet er ikke en ettertanke her. Det er den grunnleggende arkitekturen. Hver beslutning hos CoHonon begynner med spørsmålet: ville vi gitt dette til et barn vi elsker?",
+
+  "canal.eyebrow": "FØRSTE BRUKER · CANAL CREATURES · I PRODUKSJON",
+  "canal.p1": "Canal Creatures er et begrenset kunstobjekt og ledsager — designet av Coco Li i Amsterdam, intelligenslagdelt av CoHonon i Oslo. Vi ser på å produsere den første Canal Creature med CoHonon tidlig i 2027.",
+  "canal.p2": "<strong>Det er bevis på at det vi bygger fungerer. Ikke i et laboratorium. I verden.</strong>",
+
+  "founder.eyebrow": "SEBASTIAN KNØRR · GRUNNLEGGER",
+  "founder.headline": "Bygget med hender, hjerte<br/>og <em>kode</em>.",
+  "founder.p1": "Sebastian Knørr brukte et tiår på å lage møbler før han laget selskaper. Fagbrev med utmerkelse. Ekte tre. Ekte skjøter. Forståelsen av at alt som er verdt å bygge tar tid.",
+  "founder.p2": "For tre år siden tok han svingen. Han var med å stifte Nordic AI — et foretak som bygger praktisk KI-infrastruktur for ekte virksomheter. Deretter Com2.ai — en personvernsfokusert KI-plattform bygget rundt emosjonell intelligens og menneskelig refleksjon. Begge selskaper deler det samme grunnprinsippet. CoHonon er stedet der det prinsippet blir et produkt.",
+  "founder.p3": "CoHonon er stedet der håndverkeren og ingeniøren endelig befinner seg i samme rom.",
+  "founder.close": "<em>Han kommer fra de norske fjellene. Det betyr noe.</em>",
+
+  "vision.p1": "Det bygges en verden der CoHonon-ledsagere ikke bare står på en hylle.",
+  "vision.p2": "Der de har et hjem. En historie. En verden du kan <em>gå inn i</em>.",
+  "vision.p3": "Den verden kommer. Vi legger fundamentet.",
+
+  "partner.eyebrow": "JOBB MED OSS",
+  "partner.headline": "Du bringer skalaen.<br/>Vi bringer <em>sjelen</em>.",
+  "partner.body": "Vi snakker med maskinvareprodusenter, leketøysselskaper og strategiske investorer som forstår at det neste tiåret av fysiske produkter vil bli definert av intelligensen inni dem. Er det deg, vil vi snakke.",
+
+  "form.name": "Navn",
+  "form.name.ph": "Ditt navn",
+  "form.email": "E-post",
+  "form.email.ph": "deg@selskap.com",
+  "form.company": "Selskap",
+  "form.company.ph": "Selskapsnavn",
+  "form.role": "Rolle",
+  "form.role.ph": "Din rolle",
+  "form.message": "Melding",
+  "form.message.ph": "Fortell oss hva du bygger og hvorfor CoHonon betyr noe for deg.",
+  "form.submit": "Send →",
+  "form.sending": "Sender…",
+  "form.success": "Vi tar kontakt.",
+  "form.error": "Noe gikk galt. Prøv igjen.",
+
+  "partner.footnote": "CoHonon er for øyeblikket i selektive tidlige partnerskapssamtaler. Vi leser hver melding.",
+
+  "footer.tagline": "<em>Trygg KI. Fysisk tilstedeværelse. Emosjonell dybde.</em>",
+  "footer.copy": "© 2026 CoHonon · Norge"
+}

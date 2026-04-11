@@ -1,0 +1,11 @@
+{
+  "name": "cohonon",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "translate": "node scripts/translate.mjs"
+  },
+  "dependencies": {
+    "@anthropic-ai/sdk": "^0.36.3"
+  }
+}
