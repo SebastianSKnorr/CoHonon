@@ -46,7 +46,7 @@ export async function authRoutes(app: FastifyInstance) {
     return reply.send({ user: { id: user.id, email: user.email, name: user.name }, token })
   })
 
-  app.get('/me', { onRequest: [app.authenticate] }, async (req, reply) => {
+  app.get('/me', { onRequest: [(app as any).authenticate] }, async (req, reply) => {
     const user = await prisma.user.findUnique({
       where: { id: (req.user as any).id },
       select: { id: true, email: true, name: true, createdAt: true },
