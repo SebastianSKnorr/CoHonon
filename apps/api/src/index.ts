@@ -8,6 +8,7 @@ import { authRoutes } from './routes/auth'
 import { profileRoutes } from './routes/profile'
 import { subscribeRoutes } from './routes/subscribe'
 import { adminRoutes } from './routes/admin'
+import { analyticsRoutes } from './routes/analytics'
 
 async function main() {
   const app = Fastify({ logger: true })
@@ -118,6 +119,7 @@ async function main() {
   await app.register(profileRoutes, { prefix: '/api' })
   await app.register(subscribeRoutes, { prefix: '/api' })
   await app.register(adminRoutes, { prefix: '/api' })
+  await app.register(analyticsRoutes, { prefix: '/api' })
 
   // Start
   const port = Number(process.env.PORT) || 8080

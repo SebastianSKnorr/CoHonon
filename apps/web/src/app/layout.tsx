@@ -1,4 +1,5 @@
 import type { Metadata } from 'next'
+import Analytics from './components/Analytics'
 
 export const metadata: Metadata = {
   title: 'CoHonon',
@@ -18,6 +19,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         background: '#070c12',
         color: '#ddeef8',
       }}>
+        <Analytics />
         {children}
       </body>
     </html>

@@ -264,3 +264,24 @@ enum ObservationSource {
   INFERENCE
   MANUAL
 }
+
+// ── Analytics ─────────────────────────────────────────────────────────────────
+
+model PageView {
+  id        String   @id @default(cuid())
+  sessionId String
+  page      String
+  referrer  String?
+  browser   String?
+  os        String?
+  device    String?
+  screen    String?
+  language  String?
+  timezone  String?
+  country   String?  // from CF-IPCountry header
+
+  createdAt DateTime @default(now())
+
+  @@index([createdAt])
+  @@index([sessionId])
+}
