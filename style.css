@@ -152,6 +152,27 @@ nav.nav--scrolled {
 
 .hero-inner { position: relative; max-width: 700px; }
 
+/* Coming Soon */
+.coming-soon {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-family: var(--font-serif);
+  font-size: clamp(4rem, 18vw, 18rem);
+  font-weight: 700;
+  line-height: 1;
+  letter-spacing: -0.03em;
+  white-space: nowrap;
+  color: transparent;
+  -webkit-text-stroke: 1px rgba(196, 96, 26, 0.18);
+  user-select: none;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.hero-inner { z-index: 1; }
+
 .hero-name {
   font-family: var(--font-serif);
   font-size: var(--text-3xl);
