@@ -3,211 +3,464 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>CoHonon</title>
+  <title>CoHonon — Safe AI. Physical Presence.</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400&display=swap" rel="stylesheet" />
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
     :root {
-      --bg:      #070c12;
-      --accent:  #5ab4d4;
-      --frost:   #a8d8ee;
-      --text:    #ddeef8;
-      --muted:   #5a8099;
-      --border:  #162330;
+      --bg:     #070c12;
+      --accent: #5ab4d4;
+      --frost:  #a8d8ee;
+      --text:   #ddeef8;
+      --muted:  #5a8099;
+      --border: #162330;
+      --card:   rgba(90,180,212,0.03);
     }
 
-    html, body {
-      height: 100%;
+    html { scroll-behavior: smooth; }
+
+    body {
       background: var(--bg);
       color: var(--text);
       font-family: 'Inter', system-ui, sans-serif;
+      font-weight: 300;
+      line-height: 1.7;
+      overflow-x: hidden;
     }
 
-    /* aurora glow */
     body::before {
       content: '';
       position: fixed;
-      top: -40%;
-      left: 50%;
+      top: -30%; left: 50%;
       transform: translateX(-50%);
-      width: 120vw;
-      height: 60vh;
-      background: radial-gradient(ellipse at center, rgba(60,140,190,0.07) 0%, transparent 70%);
+      width: 140vw; height: 70vh;
+      background: radial-gradient(ellipse at center, rgba(60,140,190,0.06) 0%, transparent 65%);
       pointer-events: none;
+      z-index: 0;
     }
 
-    .scene {
-      position: relative;
+    /* NAV */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
       display: flex;
+      justify-content: space-between;
       align-items: center;
-      justify-content: center;
-      min-height: 100vh;
-      padding: 2rem;
-      text-align: center;
-      overflow: hidden;
+      padding: 1.25rem 2.5rem;
+      background: rgba(7,12,18,0.88);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(22,35,48,0.6);
     }
 
-    .ghost {
-      position: absolute;
-      inset: 0;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: clamp(5rem, 20vw, 20rem);
-      font-weight: 800;
-      letter-spacing: -0.04em;
-      color: transparent;
-      -webkit-text-stroke: 1px rgba(90, 180, 212, 0.11);
-      user-select: none;
-      pointer-events: none;
-      white-space: nowrap;
-    }
-
-    .content {
-      position: relative;
-      z-index: 1;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 1.5rem;
-      max-width: 440px;
-      width: 100%;
-    }
-
-    .logo {
-      font-size: 0.78rem;
-      font-weight: 600;
-      letter-spacing: 0.28em;
-      text-transform: uppercase;
+    .nav-logo {
+      font-size: 0.78rem; font-weight: 600;
+      letter-spacing: 0.28em; text-transform: uppercase;
       color: var(--muted);
     }
 
-    h1 {
-      font-size: clamp(2rem, 6vw, 3.5rem);
-      font-weight: 700;
-      letter-spacing: -0.03em;
-      line-height: 1.1;
+    .nav-cta {
+      font-size: 0.85rem; font-weight: 600; letter-spacing: 0.06em;
+      color: var(--frost); text-decoration: none;
+      border: 1px solid rgba(90,180,212,0.35);
+      padding: 0.45rem 1.1rem; border-radius: 5px;
+      transition: border-color 0.2s, background 0.2s;
     }
 
-    h1 span { color: var(--accent); }
+    .nav-cta:hover { background: rgba(90,180,212,0.08); border-color: rgba(90,180,212,0.7); }
 
-    p.sub {
-      color: var(--muted);
-      font-size: 0.95rem;
-      line-height: 1.7;
-      max-width: 340px;
-      font-weight: 300;
+    /* LAYOUT */
+    section { position: relative; z-index: 1; }
+
+    .container { max-width: 760px; margin: 0 auto; padding: 0 2rem; }
+    .container-wide { max-width: 1000px; margin: 0 auto; padding: 0 2rem; }
+
+    .eyebrow {
+      font-size: 0.72rem; font-weight: 600;
+      letter-spacing: 0.22em; text-transform: uppercase;
+      color: var(--muted); margin-bottom: 1.5rem;
     }
 
     .divider {
-      width: 40px;
-      height: 1px;
+      width: 40px; height: 1px;
       background: linear-gradient(90deg, transparent, var(--accent), transparent);
-      opacity: 0.35;
+      opacity: 0.3; margin: 0 auto 6rem;
+      position: relative; z-index: 1;
     }
 
-    form {
-      display: flex;
-      flex-direction: column;
-      gap: 0.65rem;
-      width: 100%;
+    em { font-style: italic; color: var(--accent); }
+
+    /* HERO */
+    #hero {
+      min-height: 100vh;
+      display: flex; align-items: center; justify-content: center;
+      text-align: center; padding: 8rem 2rem 6rem;
     }
 
-    input {
-      background: rgba(90,180,212,0.04);
-      border: 1px solid var(--border);
-      border-radius: 6px;
-      padding: 0.75rem 1rem;
-      color: var(--text);
-      font-size: 0.9rem;
-      font-family: inherit;
-      font-weight: 300;
-      outline: none;
-      transition: border-color 0.2s, background 0.2s;
-      width: 100%;
+    .hero-inner { max-width: 680px; }
+
+    h1.hero-headline {
+      font-size: clamp(2.4rem, 5.5vw, 4rem);
+      font-weight: 700; letter-spacing: -0.03em; line-height: 1.1;
+      margin-bottom: 2rem;
     }
 
-    input::placeholder { color: var(--muted); }
-    input:focus {
-      border-color: rgba(90,180,212,0.35);
-      background: rgba(90,180,212,0.06);
+    .hero-body {
+      color: var(--muted); font-size: 1rem; font-weight: 300;
+      line-height: 1.75; max-width: 480px; margin: 0 auto 2.5rem;
     }
 
-    button {
-      background: transparent;
-      border: 1px solid rgba(90,180,212,0.5);
-      border-radius: 6px;
-      padding: 0.75rem 1rem;
-      color: var(--frost);
-      font-size: 0.9rem;
-      font-weight: 600;
-      font-family: inherit;
-      letter-spacing: 0.06em;
-      cursor: pointer;
+    .hero-cta {
+      display: inline-block;
+      font-size: 0.9rem; font-weight: 600; letter-spacing: 0.06em;
+      color: var(--frost); text-decoration: none;
+      border: 1px solid rgba(90,180,212,0.45);
+      padding: 0.85rem 2.2rem; border-radius: 6px;
       transition: background 0.2s, border-color 0.2s;
+    }
+
+    .hero-cta:hover { background: rgba(90,180,212,0.08); border-color: rgba(90,180,212,0.8); }
+
+    /* PROBLEM */
+    #problem { padding: 5rem 0 7rem; }
+
+    #problem .container {
+      border-left: 1px solid var(--border);
+      padding-left: 2.5rem;
+    }
+
+    #problem p { color: var(--muted); font-size: 1.05rem; line-height: 1.8; margin-bottom: 1.5rem; }
+    #problem p:last-child { margin-bottom: 0; }
+    #problem p strong { color: var(--text); font-weight: 400; }
+
+    /* PLATFORM */
+    #platform { padding: 6rem 0 7rem; }
+
+    #platform .section-header { text-align: center; margin-bottom: 4rem; }
+
+    .platform-grid {
+      display: grid; grid-template-columns: repeat(3, 1fr);
+      gap: 1.5px; background: var(--border);
+      border: 1px solid var(--border); border-radius: 10px; overflow: hidden;
+    }
+
+    @media (max-width: 640px) { .platform-grid { grid-template-columns: 1fr; } }
+
+    .platform-block { background: var(--bg); padding: 2.5rem 2rem; }
+
+    .platform-num {
+      font-size: 0.68rem; font-weight: 600; letter-spacing: 0.2em;
+      color: var(--accent); opacity: 0.6; margin-bottom: 1rem;
+    }
+
+    .platform-title {
+      font-size: 0.8rem; font-weight: 700; letter-spacing: 0.12em;
+      text-transform: uppercase; color: var(--text); margin-bottom: 1.25rem;
+    }
+
+    .platform-body { color: var(--muted); font-size: 0.9rem; line-height: 1.75; }
+
+    /* CANAL CREATURES */
+    #canal { padding: 6rem 0 7rem; }
+
+    #canal .inner {
+      background: var(--card); border: 1px solid var(--border);
+      border-radius: 10px; padding: 3rem;
+    }
+
+    #canal p { color: var(--muted); font-size: 1rem; line-height: 1.8; margin-bottom: 1.25rem; }
+    #canal p:last-child { margin-bottom: 0; }
+    #canal p strong { color: var(--text); font-weight: 400; }
+
+    /* FOUNDER */
+    #founder { padding: 6rem 0 7rem; }
+
+    h2.section-headline {
+      font-size: clamp(1.8rem, 4vw, 2.8rem);
+      font-weight: 700; letter-spacing: -0.025em;
+      line-height: 1.15; margin-bottom: 2.5rem;
+    }
+
+    #founder p { color: var(--muted); font-size: 1rem; line-height: 1.8; margin-bottom: 1.25rem; }
+    #founder p:last-child { margin-bottom: 0; }
+    .founder-close { margin-top: 2rem; }
+
+    /* VISION */
+    #vision { padding: 6rem 0 7rem; text-align: center; }
+
+    #vision p { color: var(--muted); font-size: 1.05rem; line-height: 1.8; margin-bottom: 1.25rem; }
+    #vision p:last-child { margin-bottom: 0; }
+
+    /* PARTNER */
+    #partner { padding: 6rem 0 8rem; }
+
+    #partner .section-header { margin-bottom: 3rem; }
+
+    h2.partner-headline {
+      font-size: clamp(1.8rem, 4vw, 2.8rem);
+      font-weight: 700; letter-spacing: -0.025em;
+      line-height: 1.15; margin-bottom: 1.5rem;
+    }
+
+    .partner-body {
+      color: var(--muted); font-size: 1rem; line-height: 1.75;
+      margin-bottom: 3rem; max-width: 520px;
+    }
+
+    form { display: flex; flex-direction: column; gap: 0.75rem; max-width: 520px; }
+
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 0.75rem; }
+
+    @media (max-width: 520px) { .form-row { grid-template-columns: 1fr; } }
+
+    label {
+      display: block; font-size: 0.75rem; font-weight: 500;
+      letter-spacing: 0.06em; color: var(--muted); margin-bottom: 0.35rem;
+    }
+
+    input, textarea {
       width: 100%;
+      background: rgba(90,180,212,0.04); border: 1px solid var(--border);
+      border-radius: 6px; padding: 0.75rem 1rem;
+      color: var(--text); font-size: 0.9rem;
+      font-family: inherit; font-weight: 300; outline: none;
+      transition: border-color 0.2s;
     }
 
-    button:hover {
-      background: rgba(90,180,212,0.08);
-      border-color: rgba(90,180,212,0.8);
+    input::placeholder, textarea::placeholder { color: var(--muted); opacity: 0.6; }
+    input:focus, textarea:focus { border-color: rgba(90,180,212,0.4); }
+    textarea { resize: vertical; min-height: 130px; }
+
+    .submit-btn {
+      margin-top: 0.25rem;
+      background: transparent; border: 1px solid rgba(90,180,212,0.5);
+      border-radius: 6px; padding: 0.85rem 2rem;
+      color: var(--frost); font-size: 0.9rem; font-weight: 600;
+      font-family: inherit; letter-spacing: 0.06em;
+      cursor: pointer; transition: background 0.2s, border-color 0.2s;
+      align-self: flex-start;
     }
 
-    button:disabled { opacity: 0.4; cursor: default; }
+    .submit-btn:hover { background: rgba(90,180,212,0.08); border-color: rgba(90,180,212,0.8); }
+    .submit-btn:disabled { opacity: 0.4; cursor: default; }
 
-    .message { font-size: 0.85rem; min-height: 1.2em; font-weight: 300; }
-    .message.success { color: #7ecaa8; }
-    .message.error   { color: #c87e8a; }
+    .form-message { font-size: 0.85rem; font-weight: 300; min-height: 1.2em; }
+    .form-message.success { color: #7ecaa8; }
+    .form-message.error   { color: #c87e8a; }
+
+    .form-footnote {
+      margin-top: 1.75rem; font-size: 0.8rem;
+      color: var(--muted); opacity: 0.6; font-weight: 300;
+    }
+
+    /* FOOTER */
+    footer {
+      position: relative; z-index: 1;
+      border-top: 1px solid var(--border);
+      padding: 2.5rem;
+      display: flex; justify-content: space-between;
+      align-items: center; flex-wrap: wrap; gap: 0.75rem;
+    }
+
+    .footer-wordmark {
+      font-size: 0.78rem; font-weight: 600;
+      letter-spacing: 0.28em; text-transform: uppercase; color: var(--muted);
+    }
+
+    .footer-tagline { font-size: 0.85rem; font-style: italic; color: var(--muted); opacity: 0.6; }
+
+    .footer-copy {
+      width: 100%; font-size: 0.75rem;
+      color: var(--muted); opacity: 0.35; font-weight: 300;
+    }
   </style>
 </head>
 <body>
-  <div class="scene">
-    <div class="ghost">Coming Soon</div>
-    <div class="content">
-      <div class="logo">CoHonon</div>
-      <h1>The north<br/>is coming<span>.</span></h1>
-      <div class="divider"></div>
-      <p class="sub">A world where brands live, users arrive as characters, and real products change hands. Be first to know when we open.</p>
-      <form id="form">
-        <input type="text"  id="name"  placeholder="Your name"  autocomplete="name" />
-        <input type="email" id="email" placeholder="Your email" required autocomplete="email" />
-        <button type="submit" id="btn">Notify me when ready</button>
-        <p class="message" id="msg"></p>
-      </form>
+
+  <nav>
+    <span class="nav-logo">CoHonon</span>
+    <a href="#partner" class="nav-cta">Partner with us →</a>
+  </nav>
+
+  <!-- HERO -->
+  <section id="hero">
+    <div class="hero-inner">
+      <p class="eyebrow" style="margin-bottom:2.5rem">NORWAY · SAFE AI · PHYSICAL PRESENCE</p>
+      <h1 class="hero-headline">
+        Objects were built to be held.<br/>
+        CoHonon built them to <em>ask</em>.
+      </h1>
+      <p class="hero-body">
+        CoHonon is the intelligence layer for physical companions. Built on a decade of craft and three years of AI infrastructure. The first platform to give what you hold in your hands a reason to hold you back.
+      </p>
+      <a href="#partner" class="hero-cta">Partner with us →</a>
     </div>
-  </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- PROBLEM -->
+  <section id="problem">
+    <div class="container">
+      <p class="eyebrow">The Problem</p>
+      <p><strong>Physical objects have never been more sophisticated. And never more silent.</strong></p>
+      <p>The AI entering homes today listens, tracks, and delivers. It is optimised for engagement. It is not optimised for trust.</p>
+      <p>Children deserve better. And the companies building for them deserve a platform that lets them prove it.</p>
+      <p>There is a gap between what a companion is and what it could be. CoHonon is built inside that gap.</p>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- PLATFORM -->
+  <section id="platform">
+    <div class="container-wide">
+      <div class="section-header">
+        <p class="eyebrow">THE PLATFORM · QUESTAI™</p>
+      </div>
+      <div class="platform-grid">
+        <div class="platform-block">
+          <p class="platform-num">01</p>
+          <p class="platform-title">Questions over answers</p>
+          <p class="platform-body">Most AI tells. CoHonon asks. The QuestAI™ framework builds presence through curiosity — not information delivery. It creates connection without dependency.</p>
+        </div>
+        <div class="platform-block">
+          <p class="platform-num">02</p>
+          <p class="platform-title">Embedded, not surveilled</p>
+          <p class="platform-body">CoHonon runs in hardware. It does not require the cloud to feel present. Your data stays where it belongs. The intelligence is local. The experience is real.</p>
+        </div>
+        <div class="platform-block">
+          <p class="platform-num">03</p>
+          <p class="platform-title">Safe from day one</p>
+          <p class="platform-body">Safety is not a retrofit here. It is the founding architecture. Every decision at CoHonon begins with the question: would we give this to a child we love?</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- CANAL CREATURES -->
+  <section id="canal">
+    <div class="container">
+      <div class="inner">
+        <p class="eyebrow">FIRST ADOPTER · CANAL CREATURES · IN PRODUCTION</p>
+        <p>Canal Creatures is a limited-edition art object and companion — designed by Coco Li in Amsterdam, intelligence-layered by CoHonon in Oslo. The first edition is in production now, with launch planned for late 2026 into early 2027.</p>
+        <p><strong>It is proof that what we are building works. Not in a lab. In the world.</strong></p>
+      </div>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- FOUNDER -->
+  <section id="founder">
+    <div class="container">
+      <p class="eyebrow">SEBASTIAN KNØRR · FOUNDER</p>
+      <h2 class="section-headline">Built by hand, heart<br/>and <em>code</em>.</h2>
+      <p>Sebastian Knørr spent a decade making furniture before he made companies. Distinction-grade apprenticeship. Real wood. Real joints. The understanding that anything worth building is slow.</p>
+      <p>Three years ago he made the turn. He co-founded Nordic AI — a venture building practical AI infrastructure for real businesses. Then Com2.ai — a privacy-first AI platform built around emotional intelligence and human reflection. Both companies share the same founding principle. CoHonon is where that principle becomes a product.</p>
+      <p>CoHonon is where the craftsman and the engineer finally occupy the same room.</p>
+      <p class="founder-close"><em>He comes from the Norwegian mountains. That matters.</em></p>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- VISION -->
+  <section id="vision">
+    <div class="container">
+      <p>There is a world being built where CoHonon companions do not just sit on a shelf.</p>
+      <p>Where they have a home. A history. A world you can <em>enter</em>.</p>
+      <p>That world is coming. We are laying its foundation.</p>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- PARTNER -->
+  <section id="partner">
+    <div class="container">
+      <div class="section-header">
+        <p class="eyebrow">WORK WITH US</p>
+        <h2 class="partner-headline">You bring the scale.<br/>We bring the <em>soul</em>.</h2>
+        <p class="partner-body">We are speaking with hardware manufacturers, toy companies, and strategic investors who understand that the next decade of physical products will be defined by the intelligence inside them. If that is you, we want to talk.</p>
+      </div>
+
+      <form id="partner-form">
+        <div class="form-row">
+          <div>
+            <label for="p-name">Name</label>
+            <input type="text" id="p-name" placeholder="Your name" required autocomplete="name" />
+          </div>
+          <div>
+            <label for="p-email">Email</label>
+            <input type="email" id="p-email" placeholder="you@company.com" required autocomplete="email" />
+          </div>
+        </div>
+        <div class="form-row">
+          <div>
+            <label for="p-company">Company</label>
+            <input type="text" id="p-company" placeholder="Company name" required />
+          </div>
+          <div>
+            <label for="p-role">Role</label>
+            <input type="text" id="p-role" placeholder="Your role" />
+          </div>
+        </div>
+        <div>
+          <label for="p-message">Message</label>
+          <textarea id="p-message" placeholder="Tell us what you're building and why CoHonon matters to you." required></textarea>
+        </div>
+        <button type="submit" class="submit-btn" id="partner-btn">Send →</button>
+        <p class="form-message" id="partner-msg"></p>
+      </form>
+
+      <p class="form-footnote">CoHonon is currently in selective early partnership conversations. We read every message.</p>
+    </div>
+  </section>
+
+  <footer>
+    <span class="footer-wordmark">CoHonon</span>
+    <span class="footer-tagline"><em>Safe AI. Physical presence. Emotional depth.</em></span>
+    <span class="footer-copy">© 2026 CoHonon · Norway</span>
+  </footer>
 
   <script>
     const API = 'https://cohonon-platform-production.up.railway.app'
-    document.getElementById('form').addEventListener('submit', async function(e) {
+
+    document.getElementById('partner-form').addEventListener('submit', async function(e) {
       e.preventDefault()
-      const btn = document.getElementById('btn')
-      const msg = document.getElementById('msg')
-      const email = document.getElementById('email').value.trim()
-      const name  = document.getElementById('name').value.trim()
+      const btn = document.getElementById('partner-btn')
+      const msg = document.getElementById('partner-msg')
       btn.disabled = true
       btn.textContent = 'Sending…'
-      msg.className = 'message'
+      msg.className = 'form-message'
       msg.textContent = ''
+
       try {
         const res = await fetch(`${API}/api/subscribe`, {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ email, name, source: 'landing' }),
+          body: JSON.stringify({
+            email:  document.getElementById('p-email').value.trim(),
+            name:   document.getElementById('p-name').value.trim(),
+            source: 'partner',
+          }),
         })
         if (res.ok) {
-          msg.className = 'message success'
-          msg.textContent = "You're on the list. We'll be in touch."
-          document.getElementById('form').reset()
+          msg.className = 'form-message success'
+          msg.textContent = "We'll be in touch."
+          document.getElementById('partner-form').reset()
         } else { throw new Error() }
       } catch {
-        msg.className = 'message error'
+        msg.className = 'form-message error'
         msg.textContent = 'Something went wrong. Try again.'
       } finally {
         btn.disabled = false
-        btn.textContent = 'Notify me when ready'
+        btn.textContent = 'Send →'
       }
     })
   </script>
