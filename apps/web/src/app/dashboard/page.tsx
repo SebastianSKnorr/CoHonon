@@ -134,23 +134,32 @@ export default function Dashboard() {
           <Row label="Member since" value={new Date(user.createdAt).toLocaleDateString('en-GB', { day: 'numeric', month: 'long', year: 'numeric' })} last />
         </div>
 
-        {/* COMING SOON */}
+        {/* ENTER WORLD */}
         <div style={comingStyle}>
           <div style={csGlow} />
           <div style={{ position: 'relative', zIndex: 1 }}>
             <p style={{ margin: '0 0 1.25rem', fontSize: '0.68rem', fontWeight: 700, letterSpacing: '0.24em', textTransform: 'uppercase', color: '#5a8099' }}>
-              What this becomes
+              The world is loading
             </p>
             <h2 style={{ margin: '0 0 1.5rem', fontSize: 'clamp(2.4rem, 6vw, 3.8rem)', fontWeight: 800, letterSpacing: '-0.04em', lineHeight: 1, color: '#ddeef8' }}>
-              Coming<br />
-              <span style={{ color: '#5ab4d4', textShadow: '0 0 40px rgba(90,180,212,0.6)' }}>Soon.</span>
+              Enter the<br />
+              <span style={{ color: '#5ab4d4', textShadow: '0 0 40px rgba(90,180,212,0.6)' }}>World.</span>
             </h2>
-            <p style={{ margin: '0 0 1rem', fontSize: '0.95rem', color: '#5a8099', fontWeight: 300, lineHeight: 1.8 }}>
-              CoHonon is becoming a virtual world where you arrive as a character, move through themed districts, and participate in a real economy.
+            <p style={{ margin: '0 0 1.5rem', fontSize: '0.95rem', color: '#5a8099', fontWeight: 300, lineHeight: 1.8 }}>
+              Walk through the CoHonon world as your character. Explore the landscape, move freely, and see what's being built.
             </p>
-            <p style={{ margin: 0, fontSize: '0.95rem', color: '#5a8099', fontWeight: 300, lineHeight: 1.8 }}>
-              Think Monopoly — but the board is a world you can walk through. The properties are real brands. The money is real. The products ship to your door. Your character, your economy, your world.
-            </p>
+            <button
+              onClick={() => router.push('/game')}
+              style={{
+                padding: '0.7rem 2rem', background: '#5ab4d4', border: 'none',
+                borderRadius: '6px', color: '#070c12', cursor: 'pointer',
+                fontSize: '0.9rem', fontWeight: 700, fontFamily: 'inherit',
+                letterSpacing: '0.04em',
+                boxShadow: '0 0 30px rgba(90,180,212,0.3)',
+              }}
+            >
+              Enter World
+            </button>
           </div>
         </div>
 
